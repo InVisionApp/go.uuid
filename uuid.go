@@ -470,6 +470,14 @@ func NewV5(ns UUID, name string) UUID {
 	return u
 }
 
+// NewColdfusionV1 returns a V1 UUID string in the Coldfusion format
+func NewColdfusionV1() string {
+    v1 := NewV1().String()
+    coldfusionV1 := v1[:19] + v1[19:23] + v1[24:]
+
+    return coldfusionV1
+}
+
 // Returns UUID based on hashing of namespace UUID and name.
 func newFromHash(h hash.Hash, ns UUID, name string) UUID {
 	u := UUID{}
